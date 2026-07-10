@@ -15,10 +15,10 @@ set -- \
   --disableExec
 
 if [ ! -f /database/filebrowser.db ]; then
-  password_hash="$(/filebrowser hash "${ADMIN_PASSWORD}")"
+  password_hash="$(/bin/filebrowser hash "${ADMIN_PASSWORD}")"
   set -- "$@" --username admin --password "${password_hash}"
 else
-  /filebrowser \
+  /bin/filebrowser \
     --database /database/filebrowser.db \
     --config /config/settings.json \
     users update admin \
@@ -26,4 +26,4 @@ else
     --perm.admin >/dev/null
 fi
 
-exec /filebrowser "$@"
+exec /bin/filebrowser "$@"
