@@ -6,6 +6,8 @@ services:
       - "80"
     environment:
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      FB_ADDRESS: 0.0.0.0
+      FB_PORT: "80"
     volumes:
       - file-data:/srv
       - file-database:/database
