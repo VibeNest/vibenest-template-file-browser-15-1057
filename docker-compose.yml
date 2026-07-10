@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    expose:
+      - "80"
+    environment:
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    volumes:
+      - file-data:/srv
+      - file-database:/database
+      - file-config:/config
+
+volumes:
+  file-data:
+  file-database:
+  file-config:
