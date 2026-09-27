@@ -3,17 +3,25 @@ services:
     build: .
     restart: unless-stopped
     expose:
-      - "80"
+    - "80"
     environment:
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       FB_ADDRESS: 0.0.0.0
       FB_PORT: "80"
     volumes:
-      - file-data:/srv
-      - file-database:/database
-      - file-config:/config
-
+    - file-data:/srv
+    - file-database:/database
+    - file-config:/config
+    deploy:
+      resources:
+        limits:
+          memory: '268435456'
+          cpus: 0.25
+        reservations: {}
+    mem_limit: 268435456
+    memswap_limit: 268435456
+    cpus: 0.25
 volumes:
-  file-data:
-  file-database:
+  file-data: 
+  file-database: 
   file-config:
